@@ -47,3 +47,13 @@ Raspberry Pi devices in a client–server configuration.
     Listens for incoming connections, receives transmitted message packets,
     applies receiver-side protocol logic (including decryption), and displays
     the received message.
+
+
+## How It Works
+
+1. The client-side data generation layer runs continuously and listens for user input. When a new message is entered, the pipeline is triggered.
+2. The pipeline scans the local network, presents a list of available IP addresses, and prompts the user to select a target server. If the server is not detected, an IP address can be entered manually.
+3. Once a target is selected, the pipeline automatically executes the remaining client-side layers, applying encryption and initiating network transmission without further user intervention.
+4. On the server side, the receiver listens for incoming connections and maintains the established connection with the client.
+5. Upon receiving the initial message specifying the length of the incoming packet, the server begins receiving the transmitted data.
+6. After the full message packet has been received and decrypted, the server outputs the decrypted message to the terminal.
